@@ -1,0 +1,475 @@
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	box-sizing: border-box;
+	font-family: 'Neuton', serif;
+}
+
+body {
+	background-color: $black;
+}
+
+.background {
+	width: 100vw;
+	height: 100vh;
+	display: block;
+	overflow: hidden;
+	background-color: $black;
+	
+	.layer {
+		width: 125vw;
+		height: 125vh;
+		display: block;
+		position: relative;
+		
+		> div {
+			//background-color: transparent;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			display: block;
+			position: relative;
+			width: 125vw;
+			height: 125vh;
+			left: -13.5vw;
+			top: -13.5vh;
+		}
+		
+		&.lvl_2 {
+			mix-blend-mode: screen;
+		}
+		
+		&.lvl_3 {
+			mix-blend-mode: screen;
+		}
+		
+		&.lvl_1 .stars {
+			background-image: url(../assets/star-layer-1.jpg);
+		}
+		
+		&.lvl_2 .stars {
+			background-image: url(../assets/star-layer-2.jpg);
+			mix-blend-mode: screen;
+		}
+		
+		&.lvl_3 .stars {
+			background-image: url(../assets/star-layer-3.jpg);
+			mix-blend-mode: screen;
+		}
+		
+		&.lvl_4 .moon {
+			background-image: url(../assets/moon.png);
+			background-size: 126px 153px;
+			background-position: 100vw 25vh;
+		}
+		
+		.container {
+			
+			.logo {
+				display: block;
+				width: 50vmin;
+				height: 50vmin;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				@include prefix(transform, translate(-50%, -50%));
+				
+				.st0{fill:none;stroke:#ffffff;stroke-width:20;stroke-linecap:round;stroke-miterlimit:10;}
+				.st1{fill:none;stroke:#ffffff;stroke-width:22;stroke-linecap:round;stroke-miterlimit:10;}
+				.st2{fill:#FFFFFF;}
+				
+				.line {
+					position: absolute;
+					top: 0px;
+					left: -50px;
+					opacity: 1;
+					@include prefix(transform-origin, center center);
+					@include playAnim(logoPopOut, 0.1s, 10s, cubic-bezier(0.165, 0.840, 0.440, 1.000));
+					
+					#stroke-line-a {
+						path {
+							stroke-dasharray: 900;
+							stroke-dashoffset: 1200;
+							@include playAnim(pathAnim, 0.6s, 8s, ease-in-out);
+						}
+					}
+					
+					#stroke-line-im {
+						path {
+							stroke-dasharray: 900;
+							stroke-dashoffset: 1200;
+							@include playAnim(pathAnim, 0.9s, 8.3s, ease-in-out);
+						}
+					}
+					
+					#stroke-line-dot {
+						path {
+							stroke-dasharray: 900;
+							stroke-dashoffset: 1200;
+							@include playAnim(pathAnim, 0.6s, 8.6s, ease-in-out);
+						}
+					}
+					
+					#stroke-line-dash {
+						path {
+							stroke-dasharray: 900;
+							stroke-dashoffset: 1200;
+							@include playAnim(pathAnim, 0.6s, 8.8s, ease-in-out);
+						}
+					}
+					
+				}
+				
+				.path {
+					position: absolute;
+					top: 0px;
+					left: -50px;
+					opacity: 0;
+					@include prefix(transform-origin, center center);
+					@include playAnim(logoPopIn, 0.25s, 10s, cubic-bezier(0.165, 0.840, 0.440, 1.000));
+					
+					path {
+						fill: #ffffff;
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		.link-container {
+			
+			> div {
+				position: absolute;
+				@include prefix(transform, translate(-50%, -50%));
+				top: 50%;
+				left: 50%;
+				opacity: 0;
+				
+				.link {
+					font-weight: 200;
+					font-size: 32px;
+					line-height: 32px;
+					position: relative;
+					color: $white;
+					cursor: pointer;
+					pointer-events: auto;
+					
+					&:hover {
+						text-decoration: underline;
+						@include textGlitch("hastag", 17, white, black, red, blue, 450, 115);
+					}
+				}
+				
+				.service {
+					font-weight: 300;
+					font-size: 18px;
+					line-height: 20px;
+					position: relative;
+					color: rgba($white, 0.5);
+					cursor: pointer;
+					pointer-events: auto;
+					
+					&:hover {
+						color: rgba($white, 1);
+						text-decoration: underline;
+						@include textGlitch("hastag", 17, white, black, red, blue, 450, 115);
+					}
+					
+				}
+			
+			}
+			
+			.hashtag {
+				@include navIntro(hashtag, 25%, 50%);
+				@include playAnim(hashtag, 2s, 9s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+			}
+			
+			.motion {
+				@include navIntro(motion, 66.66%, 75%);
+				@include playAnim(motion, 2s, 9.2s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+			}
+			
+			.app {
+				@include navIntro(app, 66.66%, 25%);
+				@include playAnim(app, 2s, 9.4s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+			}
+			
+			.clients {
+				@include navIntro(clients, 50%, 75%);
+				@include playAnim(clients, 2s, 9.6s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+			}
+			
+			.digital {
+				@include navIntro(digital, 25%, 33.33%);
+				@include playAnim(digital, 2s, 9.6s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+			}
+			
+			.user {
+				@include navIntro(user, 75%, 33.33%);
+				@include playAnim(user, 2s, 9.8s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+			}
+			
+			.contact {
+				@include navIntro(contact, 75%, 50%);
+				@include playAnim(contact, 2s, 10s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+			}
+			
+			.branding {
+				@include navIntro(branding, 33.33%, 75%);
+				@include playAnim(branding, 2s, 10.2s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+			}
+			
+			.web {
+				@include navIntro(web, 33.33%, 25%);
+				@include playAnim(web, 2s, 10.4s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+			}
+			
+			.work {
+				@include navIntro(work, 50%, 25%);
+				@include playAnim(work, 2s, 10.6s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+			}
+			
+			.offline {
+				@include navIntro(offline, 25%, 66.66%);
+				@include playAnim(offline, 2s, 10.8s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+			}
+			
+			.video {
+				@include navIntro(video, 75%, 66.66%);
+				@include playAnim(video, 2s, 11s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+			}
+			
+		}
+		
+	}
+	
+}
+
+.overlay {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: block;
+	background-color: rgba($black, 0.75);
+	position: absolute;
+	pointer-events: none;
+	@include playAnim(bgPop, 0.3s, 10s, cubic-bezier(0.165, 0.840, 0.440, 1.000));
+}
+
+.motto {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	.motto-container {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		
+		div {
+			font-weight: 200;
+			color: $white;
+			position: relative;
+			@include prefix(transform, translate(-50%, -50%));
+			
+			span {
+				display: inline-block;
+				position: relative;
+				top: 40px;
+				opacity: 0;
+				@include prefix(filter, blur(25px));
+			}
+			
+		}
+		
+		.line_1 {
+			font-size: 40px;
+			line-height: 50px;
+			left: 0px;
+			top: 0px;
+			opacity: 1;
+			
+			span {
+				
+				&.word_0 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 0.5s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+				&.word_1 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 0.5s 1 forwards,
+								AimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7.5s 1 forwards
+					); 
+				}
+				
+				&.word_2 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 0.7s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+				&.word_3 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 0.9s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+				&.word_4 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 1.1s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+			}
+			
+		}
+		
+		.line_2 {
+			font-size: 40px;
+			line-height: 50px;
+			left: 100px;
+			
+			span {
+				
+				&.word_5 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 1.7s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+				&.word_6 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 1.9s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+				&.word_7 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 2.1s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+				&.word_8 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 2.5s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+				&.word_9 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 2.7s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+				&.word_10 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 2.9s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+				&.word_11 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 3.1s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+				&.word_12 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 3.3s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+			}
+			
+		}
+		
+		.line_3 {
+			font-size: 25px;
+			line-height: 50px;
+			text-align: right;
+			left: 100px;
+			
+			span {
+				
+				&.word_13 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 4s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+				&.word_14 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 4.2s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+				&.word_15 {
+					@include animationPrefix(
+								introAnimIn 1.5s cubic-bezier(1.000, 0.000, 0.000, 1.000) 4.4s 1 forwards,
+								introAnimOut 1s cubic-bezier(1.000, 0.000, 0.000, 1.000)  7s 1 forwards
+					);
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}
+
+.transition-container {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	display: block;
+	z-index: 100;
+	overflow: hidden;
+	top: 0px;
+	left: 0px;
+	pointer-events: none;
+	
+	&.reveal {
+		pointer-events: auto;
+		
+		.transition {
+			@include playAnim(transition, 0.8s, 0.3s, steps(24));
+		}
+		
+	}
+	
+	.transition {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translateY(-50%) translateX(-2%);
+		height: 100%;
+		width: 2500%;
+		background: url(../assets/ink.png) no-repeat 0 0;
+		background-size: 100% 100%;
+		animation-fill-mode: forwards;
+	}
+	
+}
