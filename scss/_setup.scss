@@ -59,12 +59,12 @@ $white	: #ffffff;
 	        transition-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
 }
 
-@mixin playAnim($name, $time, $delay, $easing) {
+@mixin playAnim($name, $time, $delay, $easing, $direction) {
 	animation-name: $name;
 	animation-duration: $time;
 	animation-delay: $delay;
 	animation-timing-function: $easing;
-	animation-fill-mode: forwards;
+	animation-fill-mode: $direction;
 }
 
 @include keyframes(introAnimIn) {
@@ -230,6 +230,15 @@ $white	: #ffffff;
 	}
 	100% {
 		transform: translateY(-50%) translateX(-98%);
+	}
+}
+
+@include keyframes(transitionOut) {
+	0% {
+		transform: translateY(-50%) translateX(-98%);
+	}
+	100% {
+		transform: translateY(-50%) translateX(-2%);
 	}
 }
 

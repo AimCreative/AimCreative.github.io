@@ -7,8 +7,15 @@ var parallax = new Parallax(scene, {
 (function($) {
 	
 	$('.link').on('click', function() {
+		$('.transition-container').removeClass('hide').addClass('reveal');
+		$('.content_loader').delay(1000).fadeIn(300);
+	})
+	
+	$('.inner_nav .close_btn').on('click', function() {
 		console.log('click!!!');
-		$('.transition-container').addClass('reveal');
+		$('.content_loader').fadeOut(300, function() {
+			$('.transition-container').removeClass('reveal').addClass('hide');
+		});
 	})
 	
 })(jQuery);
